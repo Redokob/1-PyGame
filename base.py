@@ -12,11 +12,13 @@ pygame.init()
 player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 Scale_player = pygame.Rect(player_pos.x,player_pos.y,50,50)
 Scale_fruit = pygame.Rect(100,100,50,50)
+Scale_fruit2 = pygame.Rect(500,400,50,50)
 fruit_color = "orange"
 clock = pygame.time.Clock()
 running = True
 dt = 0
 is_first_collide = False
+is_first_collide2 = False
 
 while running:
     # poll for events
@@ -32,6 +34,7 @@ while running:
 
 
     player = pygame.draw.rect(screen, "green", Scale_player)
+    
     collide = Scale_player.colliderect(Scale_fruit)
     # "not is_first_ player" равнозначно "is_first_player == True"
     if not collide and  not is_first_collide:
@@ -41,6 +44,14 @@ while running:
 
     print("Значение collide ",collide)
     print("значение is_first_collde " ,is_first_collide)
+
+
+    collide2 = Scale_player.colliderect(Scale_fruit2)
+    # "not is_first_ player" равнозначно "is_first_player == True"
+    if not collide2 and  not is_first_collide:
+        fruit = pygame.draw.rect(screen, (143, 0, 252, 255), Scale_fruit2)
+    else:
+        is_first_collide2 = True
 
     
 
